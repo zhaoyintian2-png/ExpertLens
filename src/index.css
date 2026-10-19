@@ -1,0 +1,405 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: #F5F0EB;
+  color: #3D3530;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==================== Paper Texture System ==================== */
+
+/* Fine paper grain - subtle, high-precision */
+.paper-grain {
+  background-color: #F5F0EB;
+  background-image:
+    radial-gradient(ellipse at 20% 20%, rgba(180,160,130,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(160,140,110,0.03) 0%, transparent 50%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(120,100,70,0.008) 3px,
+      rgba(120,100,70,0.008) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 3px,
+      rgba(120,100,70,0.006) 3px,
+      rgba(120,100,70,0.006) 4px
+    );
+}
+
+/* Linen paper - for sidebars and panels */
+.paper-linen {
+  background-color: #EDE6DC;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(120,100,70,0.012) 2px,
+      rgba(120,100,70,0.012) 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(120,100,70,0.008) 2px,
+      rgba(120,100,70,0.008) 3px
+    );
+}
+
+/* Dark paper - for charcoal panels */
+.paper-charcoal {
+  background-color: #3D3833;
+  background-image:
+    radial-gradient(ellipse at 30% 30%, rgba(100,90,75,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 70%, rgba(80,70,60,0.1) 0%, transparent 60%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(255,240,220,0.01) 3px,
+      rgba(255,240,220,0.01) 4px
+    );
+}
+
+/* Parchment card - aged document */
+.paper-parchment {
+  background-color: #F0EBE3;
+  background-image:
+    radial-gradient(ellipse at 15% 15%, rgba(180,150,100,0.05) 0%, transparent 40%),
+    radial-gradient(ellipse at 85% 85%, rgba(160,130,90,0.04) 0%, transparent 40%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 4px,
+      rgba(120,100,70,0.006) 4px,
+      rgba(120,100,70,0.006) 5px
+    );
+}
+
+/* ==================== Hairline Divider System ==================== */
+
+.hairline-t { border-top: 1px solid rgba(60,50,40,0.1); }
+.hairline-b { border-bottom: 1px solid rgba(60,50,40,0.1); }
+.hairline-l { border-left: 1px solid rgba(60,50,40,0.1); }
+.hairline-r { border-right: 1px solid rgba(60,50,40,0.1); }
+
+.hairline-double {
+  border-top: 1px solid rgba(60,50,40,0.1);
+  border-bottom: 1px solid rgba(60,50,40,0.1);
+}
+
+/* Thin rule with center ornament */
+.rule-ornate {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(60,50,40,0.2);
+}
+.rule-ornate::before,
+.rule-ornate::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(60,50,40,0.12), transparent);
+}
+
+/* ==================== Archival Numbering ==================== */
+
+.catalog-number {
+  font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: #8A7F72;
+  text-transform: uppercase;
+}
+
+.specimen-id {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: #A69B8D;
+}
+
+/* Small caps label */
+.label-caps {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8A7F72;
+  font-weight: 500;
+}
+
+/* ==================== Tag Pills - Specimen Labels ==================== */
+
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(60,50,40,0.08);
+}
+
+/* ==================== Custom Scrollbar - Brass ==================== */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(138,127,114,0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(138,127,114,0.5);
+}
+
+/* ==================== Transitions ==================== */
+
+button, a, input, textarea {
+  transition: all 0.15s ease;
+}
+
+/* ==================== Input Styling ==================== */
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(138,127,114,0.6);
+  font-style: italic;
+}
+
+::selection {
+  background: rgba(184,168,138,0.25);
+  color: #3D3530;
+}
+
+/* ==================== Loading Dots ==================== */
+
+@keyframes dotPulse {
+  0%, 80%, 100% { opacity: 0.2; }
+  40% { opacity: 0.7; }
+}
+.dot-1 { animation: dotPulse 1.4s infinite; }
+.dot-2 { animation: dotPulse 1.4s infinite 0.2s; }
+.dot-3 { animation: dotPulse 1.4s infinite 0.4s; }
+
+/* ==================== Deckled Edge (subtle) ==================== */
+
+.deckle-edge {
+  clip-path: polygon(
+    0% 1%, 1% 0%, 99% 0.5%, 100% 1%,
+    100% 99%, 99% 100%, 1% 99.5%, 0% 99%
+  );
+}
+
+/* ==================== Checkbox Style ==================== */
+
+.checkbox-mark {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 1px solid rgba(60,50,40,0.25);
+  border-radius: 1px;
+}
+.checkbox-mark.checked {
+  background: #3D3530;
+  border-color: #3D3530;
+}
+
+/* ==================== Status Indicators ==================== */
+
+.status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+/* ==================== Watermark ==================== */
+
+.watermark {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.03;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 120px;
+  font-weight: 600;
+  color: #3D3530;
+  user-select: none;
+}
+
+/* ==================== Embossing & Pressed Paper Effects ==================== */
+
+/* Stamp badge - like a typewriter label on aged card */
+.stamp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  border: 1px solid #5C5043;
+  border-radius: 1px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5C5043;
+  background: rgba(232, 220, 196, 0.3);
+  position: relative;
+}
+
+/* Wax seal - embossed circular mark for key identifiers */
+.wax-seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: #F5F0EB;
+  background: #3D3530;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 1px 3px rgba(60,50,40,0.25), 0 0 0 2px rgba(60,50,40,0.06);
+}
+
+/* Primary action button - letterpress / embossed leather */
+.btn-stamp {
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #F5F0EB !important;
+  background: #3D3530 !important;
+  border: 1px solid #2A2520 !important;
+  box-shadow: 0 2px 0 #2A2520, inset 0 1px 0 rgba(255,255,255,0.06) !important;
+  transition: all 0.15s ease;
+}
+.btn-stamp:hover:not(:disabled) {
+  background: #4A3F33 !important;
+  box-shadow: 0 1px 0 #2A2520, inset 0 1px 0 rgba(255,255,255,0.08) !important;
+  transform: translateY(-1px);
+}
+.btn-stamp:active:not(:disabled) {
+  box-shadow: 0 0 0 #2A2520, inset 0 1px 2px rgba(0,0,0,0.15) !important;
+  transform: translateY(1px);
+}
+.btn-stamp:disabled {
+  opacity: 0.30;
+  cursor: not-allowed;
+  box-shadow: none !important;
+}
+
+/* Ghost button - aged card with pressed border */
+.btn-ghost-stamp {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  background: rgba(250, 246, 241, 0.5) !important;
+  border: 1px solid #8A7F72 !important;
+  color: #5C5043 !important;
+  transition: all 0.15s ease;
+  position: relative;
+}
+.btn-ghost-stamp:hover:not(:disabled) {
+  background: #FAF6F1 !important;
+  border-color: #5C5043 !important;
+  color: #3D3530 !important;
+  box-shadow: 0 1px 3px rgba(60,50,40,0.08) !important;
+}
+
+/* Double-rule border - for important framed sections */
+.double-rule {
+  border: 1px solid #8A7F72;
+  outline: 1px solid #8A7F72;
+  outline-offset: 2px;
+}
+
+/* Raised paper - panel that sits above background */
+.paper-raised {
+  background: #FAF8F4;
+  box-shadow: 0 1px 0 rgba(60,50,40,0.06), 0 0 0 1px rgba(60,50,40,0.04);
+}
+
+/* Pressed paper - panel that sits below */
+.paper-pressed {
+  background: #EDE6DC;
+}
+
+/* Sepia dashed divider */
+.rule-sepia-dashed {
+  border-top: 1px dashed #B8A88A;
+  opacity: 0.5;
+}
+
+/* Postmark - small typewriter tag */
+.postmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border: 1px solid #8A7F72;
+  border-radius: 1px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #5C5043;
+  background: rgba(232, 220, 196, 0.2);
+}
+
+/* Section divider with ornament */
+.rule-stamped {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.rule-stamped::before,
+.rule-stamped::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(60,50,40,0.15), transparent);
+}
+.rule-stamped::before {
+  background: linear-gradient(90deg, transparent, rgba(60,50,40,0.15));
+}
+
+/* Priority dot - small muted indicator */
+.priority-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
